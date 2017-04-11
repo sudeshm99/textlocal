@@ -1,5 +1,5 @@
 
-package sendSMS;
+package packageSendSMS;
 
     import java.io.BufferedReader;
     import java.io.InputStreamReader;
@@ -16,7 +16,7 @@ package sendSMS;
     			String user = "username=" + "sudeshm40@gmil.com";
     			String hash = "&hash=" + "e4b1f08a81b2e650d73c914e69c0171d981e577afa4a9471af24c5f7b485bb19";
     			String message = "&message=" + massage;
-    			String sender = "&sender=" + "Jims Autos";
+    			String sender = "&sender=" + "Sudesh";
     			String numbers = "&numbers=" + "94" + number.substring(1);
     			
     			// Send data
