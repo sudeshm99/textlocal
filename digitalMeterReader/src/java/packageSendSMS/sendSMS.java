@@ -33,6 +33,7 @@ package packageSendSMS;
     				stringBuffer.append(line);
     			}
     			rd.close();
+                        
     			
     			return stringBuffer.toString();
     		} catch (Exception e) {

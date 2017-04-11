@@ -16,7 +16,7 @@
         
         <form action="indexServlet" method="post">
             Enter Massage: <input type="text" name="massage"></br>
-            Enter Mobile Number:<input type="text" naem="number"></br>
+            Enter Mobile Number:<input type="text" name="number"></br>
             <input type="submit" value="submit">
         </form>
     </body>
