@@ -73,25 +73,27 @@ public class indexServlet extends HttpServlet {
 //        processRequest(request, response);
         String massage = request.getParameter("massage");
         String number = request.getParameter("number");
+        String num = "94" + number.substring(1);
+        
         packageSendSMS.sendSMS sendsms = new packageSendSMS.sendSMS();
         
-        sendsms.send(massage, number);
+        sendsms.sendSms(massage, num);
         
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet indexServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet indexServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h5>"+ massage + " </br>"+number +"</h5>");
-            out.println("<h5>"+ sendsms.send(massage, number)+"</h5>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+//        response.setContentType("text/html;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter()) {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet indexServlet</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Servlet indexServlet at " + request.getContextPath() + "</h1>");
+//            out.println("<h5>"+ massage + " </br>"+num +"</h5>");
+//            out.println("<h5>"+ sendsms.sendSms(massage, num)+"</h5>");
+//            out.println("</body>");
+//            out.println("</html>");
+//        }
         
     }
 
