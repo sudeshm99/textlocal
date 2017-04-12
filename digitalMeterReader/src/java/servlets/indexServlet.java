@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import databasePackage.database;
 import java.sql.Connection;
+import packageSendSMS.sendSMS;
 
 /**
  *
@@ -77,7 +78,7 @@ public class indexServlet extends HttpServlet {
         String number = request.getParameter("number");
         String num = "94" + number.substring(1);
         
-        //packageSendSMS.sendSMS sendsms = new packageSendSMS.sendSMS();
+        //sendSMS sendsms = new sendSMS();
         //sendsms.sendSms(massage, num);
         
         database connectDB = new database();
