@@ -15,8 +15,9 @@
         <h1>Hello World! this is jsp</h1>
         
         <form action="indexServlet" method="post">
-            Enter Massage: <input type="text" name="massage"></br>
-            Enter Mobile Number:<input type="text" name="number"></br>
+            meter no: <input type="text" name="meter"></br>
+            units: <input type="text" name="units"></br>
+            
             <input type="submit" value="submit">
         </form>
     </body>

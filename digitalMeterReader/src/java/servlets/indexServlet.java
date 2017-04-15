@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import databasePackage.database;
 import java.sql.Connection;
 import packageSendSMS.sendSMS;
+import javaBeen.sendMessage;
 
 /**
  *
@@ -74,16 +75,23 @@ public class indexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-        String massage = request.getParameter("massage");
-        String number = request.getParameter("number");
-        String num = "94" + number.substring(1);
+            String meter =  request.getParameter("meter");
+            String units = request.getParameter("units");
+           
+            
+            
+//        String massage = request.getParameter("massage");
+//        String number = request.getParameter("number");
+//        String num = "94" + number.substring(1);
         
         //sendSMS sendsms = new sendSMS();
         //sendsms.sendSms(massage, num);
         
-        database connectDB = new database();
-         Connection conn = connectDB.connection();
-        
+//        database connectDB = new database();
+//         Connection conn = connectDB.connection();
+
+        sendMessage check = new sendMessage();
+        int conn = check.getReding(meter);
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -95,7 +103,7 @@ public class indexServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet indexServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h5>"+ massage + " </br>"+num + "connection "+ conn +"</h5>");
+            out.println("<h5>"+ meter + " </br>"+units+ " connection "+conn  +"</h5>");
             //out.println("<h5>"+ sendsms.sendSms(massage, num)+"</h5>");
             out.println("</body>");
             out.println("</html>");

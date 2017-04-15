@@ -13,10 +13,10 @@ package packageSendSMS;
 	public String sendSms(String massage, String no) {
 		try {
 			// Construct data
-			String user = "username=" + "sudeshm40@gmail.com";
-			String hash = "&hash=" + "e4b1f08a81b2e650d73c914e69c0171d981e577afa4a9471af24c5f7b485bb19";
+			String user = "username=" + "digital.meter202@gmail.com";
+			String hash = "&hash=" + "50aa0d2d26c1e5b1a04fce29cce29886a7b45a8a21be0adaed100c1935c55606";
 			String message = "&message=" + massage;
-			String sender = "&sender=" + "Sudesh";
+			String sender = "&sender=" + "ceb";
 			String numbers = "&numbers=" + no;
 			
 			// Send data
