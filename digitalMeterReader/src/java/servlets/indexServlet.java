@@ -91,8 +91,8 @@ public class indexServlet extends HttpServlet {
 //         Connection conn = connectDB.connection();
 
         sendMessage check = new sendMessage();
-        int conn = check.getReding(meter);
-        
+         //check.checkMessage(meter,units);
+         int current_units = check.getReading(units);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -103,7 +103,7 @@ public class indexServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet indexServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h5>"+ meter + " </br>"+units+ " connection "+conn  +"</h5>");
+            out.println("<h5>"+ meter + " </br>"+units+ " connection"+current_units +" </h5>");
             //out.println("<h5>"+ sendsms.sendSms(massage, num)+"</h5>");
             out.println("</body>");
             out.println("</html>");
