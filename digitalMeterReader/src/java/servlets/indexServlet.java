@@ -75,7 +75,7 @@ public class indexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-            String meter =  request.getParameter("meter");
+            String meter =  request.getParameter("meter");//get data from meter
             String units = request.getParameter("units");
            
             
@@ -92,7 +92,8 @@ public class indexServlet extends HttpServlet {
 
         sendMessage check = new sendMessage();
          //check.checkMessage(meter,units);
-         int current_units = check.getReading(meter,units);
+         int intUnits = Integer.parseInt(units);
+         check.getReading(meter,intUnits);//call the getReading method for updating table and send message
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -103,7 +104,7 @@ public class indexServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet indexServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h5>"+ meter + " </br>"+units+ " connection"+current_units +" </h5>");
+            out.println("<h5>"+ meter + " </br>"+units+ " connection </h5>");
             //out.println("<h5>"+ sendsms.sendSms(massage, num)+"</h5>");
             out.println("</body>");
             out.println("</html>");
