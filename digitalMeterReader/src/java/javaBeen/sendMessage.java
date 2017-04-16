@@ -9,23 +9,25 @@ import packageSendSMS.sendSMS;
 
 public class sendMessage {
     database connectDB = new database();
-    public sendMessage() {
-        
-    }
+   
     
-    public void send(String meter, int units, int reading , int current_units){// check if we want to send message or not and
+    public void checkSending(String meter, int units, int reading , int current_units){// check if we want to send message or not and
         //if we need send messag get message from table 
-            sendSMS sendsms = new sendSMS();
-            String message = null;
+           int new_reading = reading + units;
+            
             int new_units = current_units + units;
+            
             if(current_units<25 && new_units>=25){
-              message =  getMessage(1);//get message from database
+                 send(1,meter);
               
             }else if(current_units<50 && new_units>=50){
-               message = getMessage(3);
+                 send(3,meter);
+
             }else if(current_units<80 && new_units>=80){
-              message = getMessage(5);
+                 send(5,meter);
+
             }
+            setReading(meter, new_reading,new_units);
             
     }
     
@@ -45,16 +47,14 @@ public class sendMessage {
                 reading = result.getInt("current_reading");
                 current_units = result.getInt("current_units");
             }
-            send(meter,units,reading,current_units);//using meter_id,current_reading,current_units and cunsumtion call send funtion
+            checkSending(meter,units,reading,current_units);//using meter_id,current_reading,current_units and cunsumtion call checkSending funtion
         }catch(Exception ex){
             ex.getMessage();
            
         }
         
         }
-    public void setReding(){
-    
-    }
+   
     public String getMessage(int id){// get message from database
         String message = null;
         try{
@@ -72,8 +72,49 @@ public class sendMessage {
         }
      return null;   
     }
-    public int getPhoneNumber(int meter){//get phone number from database
-    
-    return 0;
+    public String getPhoneNumber(String meter){//get phone number from database
+        String number = null;
+        
+        try{
+            String sql = "SELECT contact_no FROM user WHERE meter_no=?;";
+            Connection myConnection = connectDB.connection();
+            PreparedStatement statement = myConnection.prepareStatement(sql);
+            statement.setString(1,meter);
+            ResultSet result = statement.executeQuery();
+            while(result.next()){
+                number = result.getString("contact_no");
+            }
+            return number;
+        }catch(Exception ex){
+            ex.getMessage();
+        }
+    return null;
+    }
+    public void send(int num,String meter){// send message using textlocal
+        String message = null;
+        String number = null;
+        
+        message = getMessage(num);
+        number = getPhoneNumber(meter);
+        
+//        String massage = request.getParameter("massage");
+//        String number = request.getParameter("number");
+        String universalNumber = "94" + number.substring(1);
+        
+        sendSMS sendsms = new sendSMS();
+        sendsms.sendSms(message, universalNumber);
+    }
+    public void setReading(String meter, int reading, int units){//enter new reading to database
+          try{
+            String sql = "UPDATE meter SET current_reading=?,current_units=? WHERE meter_no=?;";
+            Connection myConnection = connectDB.connection();
+            PreparedStatement statement = myConnection.prepareStatement(sql);
+            statement.setInt(1,reading);
+            statement.setInt(2,units);
+            statement.setString(3,meter);
+            statement.execute();
+                  }catch(Exception ex){
+            ex.getMessage();
+        }
     }
 }

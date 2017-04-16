@@ -80,18 +80,15 @@ public class indexServlet extends HttpServlet {
            
             
             
-//        String massage = request.getParameter("massage");
-//        String number = request.getParameter("number");
-//        String num = "94" + number.substring(1);
-        
-        //sendSMS sendsms = new sendSMS();
-        //sendsms.sendSms(massage, num);
+
         
 //        database connectDB = new database();
 //         Connection conn = connectDB.connection();
-
+    
         sendMessage check = new sendMessage();
          //check.checkMessage(meter,units);
+         //String message = check.getMessage(1);
+         //String number = check.getPhoneNumber(meter);
          int intUnits = Integer.parseInt(units);
          check.getReading(meter,intUnits);//call the getReading method for updating table and send message
         response.setContentType("text/html;charset=UTF-8");
@@ -104,7 +101,7 @@ public class indexServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet indexServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h5>"+ meter + " </br>"+units+ " connection </h5>");
+            out.println("<h5>"+ meter + " </br>"+units+"  "+ " message connection </h5>");
             //out.println("<h5>"+ sendsms.sendSms(massage, num)+"</h5>");
             out.println("</body>");
             out.println("</html>");
