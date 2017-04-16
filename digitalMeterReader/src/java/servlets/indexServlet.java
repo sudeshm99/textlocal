@@ -92,7 +92,7 @@ public class indexServlet extends HttpServlet {
 
         sendMessage check = new sendMessage();
          //check.checkMessage(meter,units);
-         int current_units = check.getReading(units);
+         int current_units = check.getReading(meter,units);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
