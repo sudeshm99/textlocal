@@ -4,9 +4,17 @@
         <servlet-name>indexServlet</servlet-name>
         <servlet-class>servlets.indexServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>checkCurrentUsage</servlet-name>
+        <servlet-class>servlets.checkCurrentUsage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>indexServlet</servlet-name>
         <url-pattern>/indexServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkCurrentUsage</servlet-name>
+        <url-pattern>/checkCurrentUsage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
